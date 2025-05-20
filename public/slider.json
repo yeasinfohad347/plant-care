@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "image": "https://i.ibb.co/9k8JcmZq/slider-img-1.jpg",
+    "alt": "Plant Care Slide"
+  },
+  {
+    "id": 2,
+   "image": "https://i.ibb.co/9k8JcmZq/slider-img-1.jpg",
+    "alt": "Calculators Slide"
+  },
+  {
+    "id": 3,
+    "image": "https://i.ibb.co/MyndRvsd/slider-img-3.jpg",
+    "alt": "Expert Advice Slide"
+  },
+  {
+    "id": 4,
+   "image": "https://i.ibb.co/mFtzzCDp/slider-img-4.jpg",
+    "alt": "Symptom Checker Slide"
+  }
+]
