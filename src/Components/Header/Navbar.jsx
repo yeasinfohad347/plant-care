@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../assets/logo.png";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
   return (
@@ -63,8 +63,8 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end gap-2">
-          <a className="btn bg-[#325432] text-white rounded-2xl">Login</a>
-          <a className="btn bg-[#325432] text-white rounded-2xl">Register</a>
+          <Link to='/login' className="btn bg-[#325432] text-white rounded-2xl">Login</Link>
+          <Link to='/register' className="btn bg-[#325432] text-white rounded-2xl">Register</Link>
         </div>
       </div>
     </div>
