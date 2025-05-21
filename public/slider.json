@@ -1,22 +1,20 @@
 [
   {
     "id": 1,
-    "image": "https://i.ibb.co/9k8JcmZq/slider-img-1.jpg",
-    "alt": "Plant Care Slide"
+    "title": "Water Wisely 🌱",
+    "content": "Avoid overwatering by checking soil moisture first. Most plants prefer damp, not soaked, roots.",
+    "image": "https://i.ibb.co/9HYsp4C1/20250521-1732-image.png"
   },
   {
     "id": 2,
-   "image": "https://i.ibb.co/9k8JcmZq/slider-img-1.jpg",
-    "alt": "Calculators Slide"
+    "title": "Discover Varieties 🌺",
+    "content": "From succulents to ferns, explore a wide variety of indoor plants that suit your lifestyle.",
+    "image": "https://i.ibb.co/k2v5zTc7/20250521-1735-image.png"
   },
   {
     "id": 3,
-    "image": "https://i.ibb.co/MyndRvsd/slider-img-3.jpg",
-    "alt": "Expert Advice Slide"
-  },
-  {
-    "id": 4,
-   "image": "https://i.ibb.co/mFtzzCDp/slider-img-4.jpg",
-    "alt": "Symptom Checker Slide"
+    "title": "Care Tips for Growth 🌿",
+    "content": "Use natural fertilizer and re-pot when necessary to help your plants flourish year-round.",
+    "image": "https://i.ibb.co/9HYsp4C1/20250521-1732-image.png"
   }
 ]

@@ -30,10 +30,13 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               <li>
-                <NavLink to='/'>Home</NavLink>
+                <NavLink to="/">Home</NavLink>
               </li>
               <li>
-                <NavLink>All Plants</NavLink>
+                <NavLink to='/allplants'>All Plants</NavLink>
+              </li>
+              <li>
+                <NavLink to='/addplant'>Add plant</NavLink>
               </li>
               <li>
                 <NavLink>My Plants</NavLink>
@@ -52,10 +55,13 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <NavLink>Home</NavLink>
+              <NavLink to='/'>Home</NavLink>
             </li>
             <li>
-              <NavLink>All Plants</NavLink>
+              <NavLink to='/allplants'>All Plants</NavLink>
+            </li>
+            <li>
+              <NavLink to='/addplant'>Add plant</NavLink>
             </li>
             <li>
               <NavLink>My Plants</NavLink>
@@ -63,8 +69,15 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end gap-2">
-          <Link to='/login' className="btn bg-[#325432] text-white rounded-2xl">Login</Link>
-          <Link to='/register' className="btn bg-[#325432] text-white rounded-2xl">Register</Link>
+          <Link to="/login" className="btn bg-[#325432] text-white rounded-2xl">
+            Login
+          </Link>
+          <Link
+            to="/register"
+            className="btn bg-[#325432] text-white rounded-2xl"
+          >
+            Register
+          </Link>
         </div>
       </div>
     </div>

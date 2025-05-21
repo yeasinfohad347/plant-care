@@ -8,6 +8,8 @@ import HomeLayouts from '../Layouts/HomeLayouts';
 import Home from '../Pages/Home';
 import Login from '../Pages/Login';
 import Register from '../Pages/Register';
+import AddPlant from '../Pages/AddPlant';
+import AllPlants from '../Pages/AllPlants';
 
 const router = createBrowserRouter([
   {
@@ -24,8 +26,17 @@ const router = createBrowserRouter([
             element:<Login/>
         },
         {
-          path:'register',
+          path:'/register',
           element:<Register/>
+        },
+        {
+          path:'/addplant',
+          element:<AddPlant/>
+        },
+        {
+          path:'/allplants',
+          loader:()=>fetch('http://localhost:3000/plants'),
+          element:<AllPlants/>
         }
     ]
   },
