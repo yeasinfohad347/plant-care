@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../../assets/logo.png";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../../Authentication/AuthContext";
+import userLogo from '../../assets/user.png'
 
 const Navbar = () => {
+
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        // console.log("sign out");
+      })
+      .catch((err) => {
+        const error = err.message;
+        console.log(error);
+      });
+  };
+
   return (
     <div className="bg-[#DDE5D7]">
       <div className="navbar w-11/12 mx-auto ">
@@ -33,10 +49,10 @@ const Navbar = () => {
                 <NavLink to="/">Home</NavLink>
               </li>
               <li>
-                <NavLink to='/allplants'>All Plants</NavLink>
+                <NavLink to="/allplants">All Plants</NavLink>
               </li>
               <li>
-                <NavLink to='/addplant'>Add plant</NavLink>
+                <NavLink to="/addplant">Add plant</NavLink>
               </li>
               <li>
                 <NavLink>My Plants</NavLink>
@@ -55,13 +71,13 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <NavLink to='/'>Home</NavLink>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink to='/allplants'>All Plants</NavLink>
+              <NavLink to="/allplants">All Plants</NavLink>
             </li>
             <li>
-              <NavLink to='/addplant'>Add plant</NavLink>
+              <NavLink to="/addplant">Add plant</NavLink>
             </li>
             <li>
               <NavLink>My Plants</NavLink>
@@ -69,6 +85,39 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end gap-2">
+          <NavLink to="/profile">
+            <img
+              className="rounded-full w-12 h-12 object-cover cursor-pointer"
+              src={user?.photoURL || userLogo}
+              alt="User profile"
+            />
+          </NavLink>
+          {user ? (
+            <button
+              onClick={handleLogOut}
+              className="btn bg-[#325432] text-white rounded-2xl"
+            >
+              Logout
+            </button>
+          ) : (
+            <div className="flex gap-2 justify-center items-center">
+              <NavLink
+                to="/login"
+                className="btn bg-[#325432] text-white rounded-2xl"
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to="/register"
+                className="btn bg-[#325432] text-white rounded-2xl"
+              >
+                Register
+              </NavLink>
+            </div>
+          )}
+        </div>
+
+        {/* <div className="navbar-end gap-2">
           <Link to="/login" className="btn bg-[#325432] text-white rounded-2xl">
             Login
           </Link>
@@ -78,7 +127,7 @@ const Navbar = () => {
           >
             Register
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );

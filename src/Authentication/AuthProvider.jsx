@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut,  updateProfile } from 'firebase/auth';
-import { auth } from '../fairbase.init';
+import {auth} from '../fairbase/fairbase.init'
+
 
 const provider=new GoogleAuthProvider();
 const AuthProvider = ({children}) => {
