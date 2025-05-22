@@ -10,6 +10,7 @@ import AllPlants from "../Pages/AllPlants";
 import PlantDetails from "../Pages/plantDetails";
 import PrivetRoute from "./PrivateRoute";
 import Profile from "../Pages/Profile";
+import MyPlants from "../Pages/MyPlants";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,13 @@ const router = createBrowserRouter([
         path:'/profile',
         element:<PrivetRoute>
           <Profile/>
+        </PrivetRoute>
+      },
+      {
+        path:'/myplants',
+        element:
+        <PrivetRoute>
+          <MyPlants/>
         </PrivetRoute>
       }
     ],

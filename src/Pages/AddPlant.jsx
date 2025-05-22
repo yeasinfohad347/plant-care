@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Authentication/AuthContext";
 
 const AddPlant = () => {
+  const {user}=useContext(AuthContext)
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -162,7 +164,7 @@ const AddPlant = () => {
               type="email"
               id="userEmail"
               name="userEmail"
-              placeholder="Your Email"
+              value={user.email}
               className="input input-bordered w-full"
             />
           </div>
@@ -174,7 +176,7 @@ const AddPlant = () => {
               type="text"
               id="userName"
               name="userName"
-              placeholder="Your Name"
+              value={user.displayName}
               className="input input-bordered w-full"
             />
           </div>

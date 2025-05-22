@@ -115,7 +115,7 @@ const Login = () => {
         {/* Login  with google */}
         <button
           onClick={handleGoogleSignIn}
-          className="btn w-full  bg-[#FEE502]  text-black mt-2 border-[#e5e5e5]"
+          className="btn w-full  bg-[#FEE502]  text-black my-2 border-[#e5e5e5]"
           type="button"
         >
           <svg

@@ -55,7 +55,7 @@ const Navbar = () => {
                 <NavLink to="/addplant">Add plant</NavLink>
               </li>
               <li>
-                <NavLink>My Plants</NavLink>
+                <NavLink to='/myplants'>My Plants</NavLink>
               </li>
             </ul>
           </div>
@@ -80,7 +80,7 @@ const Navbar = () => {
               <NavLink to="/addplant">Add plant</NavLink>
             </li>
             <li>
-              <NavLink>My Plants</NavLink>
+              <NavLink to='/myplants'>My Plants</NavLink>
             </li>
           </ul>
         </div>

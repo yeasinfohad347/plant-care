@@ -64,8 +64,8 @@ const handleGoogleSignIn = () => {
   };
 
   return (
-    <div className="space-y-6 max-w-sm mx-auto my-20">
-      <div className="text-center space-y-2">
+    <div className=" max-w-sm mx-auto my-20">
+      <div className="text-center space-y-2 mb-6">
         <div className="flex justify-center ">
           <img
             src={logo}
@@ -160,7 +160,7 @@ const handleGoogleSignIn = () => {
       <div className="text-center">
         <button
           onClick={handleGoogleSignIn}
-          className="btn w-full  bg-[#FEE502]  text-black mt-2 border-[#e5e5e5]"
+          className="btn w-full  bg-[#FEE502]  text-black my-2 border-[#e5e5e5]"
           type="button"
         >
           <svg
