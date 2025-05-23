@@ -1,11 +1,11 @@
 import React from "react";
 
-const Toggole = () => {
+const Toggole = ({handleToggle}) => {
   return (
     <div>
       <label className="swap swap-rotate px-3">
         {/* this hidden checkbox controls the state */}
-        <input type="checkbox" />
+        <input type="checkbox" onChange={handleToggle} />
 
         {/* sun icon */}
         <svg

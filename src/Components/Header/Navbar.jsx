@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import logo from "../../assets/logo.png";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../Authentication/AuthContext";
@@ -8,6 +8,21 @@ import Toggole from "../Toggole";
 const Navbar = () => {
 
   const { user, logOut } = useContext(AuthContext);
+  const [theme,setTheme]=useState(localStorage.getItem("theme")?localStorage.getItem("theme"):"light");
+  const handleToggle=(e)=>{
+      if(e.target.checked){
+        setTheme("dark")
+      }
+      else{
+        setTheme("light")
+      }
+  }
+
+  useEffect(()=>{
+    localStorage.setItem("theme",theme);
+    const localTheme=localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme",localTheme);
+  },[theme])
 
   const handleLogOut = () => {
     logOut()
@@ -86,7 +101,8 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end gap-2">
-          <Toggole/>
+          <Toggole handleToggle={handleToggle}/>
+
           <NavLink to="/profile">
             <img
               className="rounded-full w-12 h-12 object-cover cursor-pointer"
