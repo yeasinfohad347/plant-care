@@ -30,7 +30,7 @@ const MyPlants = () => {
           method: "DELETE",
         })
           .then((res) => res.json())
-          .then(() => {
+          .then((data) => {
             setPlants(plants.filter((plant) => plant._id !== id));
             Swal.fire("Deleted!", "Your plant has been deleted.", "success");
           })
@@ -99,7 +99,7 @@ const MyPlants = () => {
               {/* Buttons */}
               <div className="pt-4 flex justify-between">
                 <button
-                  onClick={() => navigate(`/update/${plant._id}`)}
+                  onClick={() => navigate(`/update-plant/${plant._id}`)}
                   className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
                 >
                   Update

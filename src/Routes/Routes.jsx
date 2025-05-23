@@ -11,6 +11,7 @@ import PlantDetails from "../Pages/plantDetails";
 import PrivetRoute from "./PrivateRoute";
 import Profile from "../Pages/Profile";
 import MyPlants from "../Pages/MyPlants";
+import UpdatePlant from "../Pages/UpdatePlant";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,12 @@ const router = createBrowserRouter([
         <PrivetRoute>
           <MyPlants/>
         </PrivetRoute>
+      },
+      {
+        path:'/update-plant/:id',
+         loader: ({ params }) =>
+          fetch(`http://localhost:3000/plants/${params.id}`),
+         element:<UpdatePlant/>
       }
     ],
   },
