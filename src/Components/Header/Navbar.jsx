@@ -65,7 +65,7 @@ const Navbar = () => {
               className="h-12 w-12 rounded-[50%] bg-[#348553]"
               alt=""
             />
-            <a className=" text-2xl font-bold text-[#325432]">PlantPal</a>
+            <Link to='/' className=" text-2xl font-bold text-[#325432]">PlantPal</Link>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
