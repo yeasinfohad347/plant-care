@@ -1,25 +1,44 @@
-
 import React from "react";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 
 const UpdatePlant = () => {
+  const plant = useLoaderData();
+  const navigate = useNavigate();
   const {
+    _id,
     image,
     careLevel,
     category,
     description,
     healthStatus,
     lastWateredDate,
-    nextWateringData,
+    nextWateringDate,
     plantName,
     wateringFrequency,
-  } = useLoaderData();
+  } = plant;
+
+  console.log(plant);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    const newPlantInfo = Object.fromEntries(formData.entries);
+    const newPlantInfo = Object.fromEntries(formData.entries());
+
+    fetch(`http://localhost:3000/plants/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newPlantInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          navigate("/myplants");
+          e.target.reset()
+        }
+      });
   };
   return (
     <div className="max-w-2xl mx-auto p-8 mt-10 bg-white shadow-2xl rounded-lg">
@@ -125,7 +144,7 @@ const UpdatePlant = () => {
             type="date"
             id="nextWateringDate"
             name="nextWateringDate"
-            defaultValue={nextWateringData}
+            defaultValue={nextWateringDate}
             className="input input-bordered w-full"
           />
         </div>
