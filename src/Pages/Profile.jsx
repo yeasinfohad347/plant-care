@@ -20,7 +20,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="max-w-sm mx-auto bg-white rounded-lg shadow-lg p-6 text-center">
+    <div className="max-w-sm mx-auto bg-white rounded-lg shadow-lg p-6 text-center mt-16 md:mt-30">
       {/* <Helmet>
         <title>Profile</title>
       </Helmet> */}

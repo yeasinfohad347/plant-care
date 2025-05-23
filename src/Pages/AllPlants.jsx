@@ -10,7 +10,7 @@ const AllPlants = () => {
         All Plants
       </h2>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto min-h-screen">
         <table className="table w-full border rounded-lg shadow">
           <thead className="bg-green-200 text-green-900">
             <tr>
