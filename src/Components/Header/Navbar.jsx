@@ -3,6 +3,7 @@ import logo from "../../assets/logo.png";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../../Authentication/AuthContext";
 import userLogo from '../../assets/user.png'
+import Toggole from "../Toggole";
 
 const Navbar = () => {
 
@@ -85,6 +86,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end gap-2">
+          <Toggole/>
           <NavLink to="/profile">
             <img
               className="rounded-full w-12 h-12 object-cover cursor-pointer"
