@@ -1,10 +1,11 @@
 import React from "react";
 import { useLoaderData } from "react-router";
+import Loading from "./Loading";
 
 const PlantDetails = () => {
   const plant = useLoaderData();
    if (!plant) {
-    return <div className="text-center mt-10 text-gray-600">Loading...</div>;
+    return <Loading/>
   }
 
   return (

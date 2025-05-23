@@ -2,6 +2,7 @@ import React from 'react';
 import HeroSection from '../Components/HeroSection/HeroSection';
 import NewPlantsSection from './NewPlantSection';
 import FAQSection from './FAQSection';
+import UserStories from './UserStories';
 
 const Home = () => {
     return (
@@ -13,8 +14,12 @@ const Home = () => {
             <NewPlantsSection/>
            </div>
            <div>
+            <UserStories/>
+           </div>
+           <div>
             <FAQSection/>
            </div>
+
         </div>
     );
 };

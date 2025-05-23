@@ -12,6 +12,7 @@ import PrivetRoute from "./PrivateRoute";
 import Profile from "../Pages/Profile";
 import MyPlants from "../Pages/MyPlants";
 import UpdatePlant from "../Pages/UpdatePlant";
+import Loading from "../Pages/Loading";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,7 @@ const router = createBrowserRouter([
         path: "/allplants",
         loader: () => fetch("http://localhost:3000/plants"),
         element: <AllPlants />,
+        hydrateFallbackElement:<Loading/>
       },
       {
         path: "/plants/:id",
@@ -52,7 +54,9 @@ const router = createBrowserRouter([
           <PrivetRoute>
             <PlantDetails />
           </PrivetRoute>
+        
         ),
+        hydrateFallbackElement:<Loading/>
       },
       {
         path:'/profile',
@@ -71,7 +75,9 @@ const router = createBrowserRouter([
         path:'/update-plant/:id',
          loader: ({ params }) =>
           fetch(`http://localhost:3000/plants/${params.id}`),
-         element:<UpdatePlant/>
+         element:<UpdatePlant/>,
+         hydrateFallbackElement:<Loading/>
+
       }
     ],
   },

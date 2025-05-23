@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Loading from "../../Pages/Loading";
 
 const AnimatedPlantSlider = () => {
   const [slides, setSlides] = useState([]);
@@ -49,7 +50,7 @@ const AnimatedPlantSlider = () => {
           ))}
         </Slider>
       ) : (
-        <p className="text-center py-10">Loading...</p>
+        <Loading/>
       )}
     </div>
   );
