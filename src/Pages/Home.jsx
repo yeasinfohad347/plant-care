@@ -1,6 +1,7 @@
 import React from 'react';
 import HeroSection from '../Components/HeroSection/HeroSection';
 import NewPlantsSection from './NewPlantSection';
+import FAQSection from './FAQSection';
 
 const Home = () => {
     return (
@@ -10,6 +11,9 @@ const Home = () => {
            </div>
            <div className="newplant">
             <NewPlantsSection/>
+           </div>
+           <div>
+            <FAQSection/>
            </div>
         </div>
     );

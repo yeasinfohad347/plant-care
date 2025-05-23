@@ -11,7 +11,7 @@ import logo from "../../assets/logo.png"
 const Footer = () => {
   return (
     <footer className="bg-[#325432] text-white py-16 mt-20">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 text-sm md:text-base">
+      <div className="w-11/12 mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10 text-sm md:text-base">
         {/* Website Info */}
         <div>
           <div className="flex items-center gap-2 mb-3">
@@ -60,7 +60,7 @@ const Footer = () => {
         </div>
 
         {/* Social Media */}
-        <div>
+        <div className="">
           <h3 className="text-lg font-semibold mb-3 text-[#E0FFC2]">
             Follow Us
           </h3>

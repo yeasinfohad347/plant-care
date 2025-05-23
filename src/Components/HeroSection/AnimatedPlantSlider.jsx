@@ -35,15 +35,15 @@ const AnimatedPlantSlider = () => {
               {/* Background Image */}
               <img
                 src={slide.image}
-                className="w-full h-[600px] object-cover opacity-50"
+                className="w-full h-[600px] object-cover"
               />
 
               {/* Content */}
               <div className="absolute inset-0 bg-transparent  flex flex-col justify-center items-center text-white px-6 text-center">
-                <h2 className="text-3xl md:text-5xl font-bold mb-4 text-[#008236]">
+                <h2 className="text-3xl md:text-5xl font-bold mb-4 text-[#FAF3E0]">
                   {slide.title}
                 </h2>
-                <p className="text-base md:text-xl max-w-2xl text-[#234823] font-bold">{slide.content}</p>
+                <p className="text-base md:text-xl max-w-2xl text-[#FAF3E0] font-bold">{slide.content}</p>
               </div>
             </div>
           ))}
