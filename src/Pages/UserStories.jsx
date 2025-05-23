@@ -36,11 +36,11 @@ const UserStories = () => {
   // Slick slider settings
   const settings = {
     dots: true,
-    arrows: false,           // remove navigation arrows
+    arrows: false,           
     infinite: true,
     speed: 500,
-    autoplay: true,          // enable autoplay
-    autoplaySpeed: 3000,     // change every 3s
+    autoplay: true,          
+    autoplaySpeed: 3000,    
     slidesToShow: 3,
     slidesToScroll: 1,
     responsive: [
@@ -70,8 +70,8 @@ const UserStories = () => {
         ))}
       </Slider>
 
-      <div className="mt-16 text-left max-w-2xl mx-auto">
-        <h3 className="text-2xl font-bold mb-4">✍️ Share Your Story</h3>
+      <div className="mt-16 text-left max-w-5xl mx-auto">
+        <h3 className="text-2xl font-bold mb-4 text-center">✍️ Share Your Story</h3>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"

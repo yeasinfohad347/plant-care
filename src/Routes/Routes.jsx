@@ -13,6 +13,7 @@ import Profile from "../Pages/Profile";
 import MyPlants from "../Pages/MyPlants";
 import UpdatePlant from "../Pages/UpdatePlant";
 import Loading from "../Pages/Loading";
+import ErrorPage from "../Pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
 
       }
     ],
+  },
+  {
+    path: "*",
+    element: <ErrorPage/>,
   },
 ]);
 
