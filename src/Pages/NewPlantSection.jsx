@@ -47,7 +47,7 @@ const NewPlantsSection = () => {
         <div className="flex justify-center mt-6">
           <button
             onClick={() => setShowAll(true)}
-            className="btn btn-outline btn-primary"
+            className="btn btn-outline btn-secondary"
           >
             View More
           </button>

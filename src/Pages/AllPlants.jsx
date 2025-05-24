@@ -62,7 +62,7 @@ const AllPlants = () => {
           </thead>
           <tbody>
             {sortedPlants.map((plant, index) => (
-              <tr key={plant._id} className="hover:bg-green-50 transition">
+              <tr key={plant._id} className="hover:bg-green-400 transition">
                 <td>{index + 1}</td>
                 <td>{plant.plantName}</td>
                 <td>{plant.category}</td>
