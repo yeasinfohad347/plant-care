@@ -9,7 +9,7 @@ const Toggole = ({handleToggle}) => {
 
         {/* sun icon */}
         <svg
-          className="swap-on h-8 w-8 fill-current te"
+          className="swap-on h-8 w-8 fill-current te text-yellow-300"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >

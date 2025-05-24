@@ -26,7 +26,7 @@ const AddPlant = () => {
           console.log("data from db", data);
           e.target.reset();
           Swal.fire({
-            title: "Drag me!",
+            title: "Your plant is Successfully added",
             icon: "success",
             draggable: true,
           });

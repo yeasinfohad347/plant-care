@@ -50,7 +50,7 @@ const MyPlants = () => {
   };
 
   if (isLoading) {
-    return <Loading/>
+    return <Loading />;
   }
 
   return (
@@ -65,7 +65,7 @@ const MyPlants = () => {
             You haven't added any plants yet.
           </h3>
           <button
-            onClick={() => navigate("/add-plant")}
+            onClick={() => navigate("/addplant")}
             className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition"
           >
             Add Your First Plant 🌱
@@ -74,55 +74,56 @@ const MyPlants = () => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {plants.map((plant) => (
-            <div
-              key={plant._id}
-              className="bg-white rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden transition-transform transform hover:-translate-y-1"
-            >
-              <div className="h-52 w-full overflow-hidden flex items-center justify-center rounded-2xl">
+            <div key={plant._id} className="card bg-base-100 w-96 shadow-sm">
+              <figure className="h-52 bg-base-200 flex items-center justify-center">
                 <img
                   src={plant.image}
                   alt={plant.plantName}
-                  className="max-h-full max-w-full object-contain rounded-2xl"
+                  className="max-h-full max-w-full object-contain rounded-xl"
                 />
-              </div>
-
-              <div className="p-5 space-y-2">
-                <h3 className="text-2xl font-semibold text-green-700">
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title text-green-700">
                   {plant.plantName}
-                </h3>
-                <p className="text-gray-600 text-sm mb-2">{plant.description}</p>
+                  <div className="badge badge-success">
+                    {plant.healthStatus}
+                  </div>
+                </h2>
+                <p className="text-gray-600 text-sm">{plant.description}</p>
 
                 <div className="text-sm text-gray-700 space-y-1">
                   <p>
-                    <span className="font-medium">Category:</span> {plant.category}
+                    <span className="font-medium">Category:</span>{" "}
+                    {plant.category}
                   </p>
                   <p>
-                    <span className="font-medium">Care Level:</span> {plant.careLevel}
+                    <span className="font-medium">Care Level:</span>{" "}
+                    {plant.careLevel}
                   </p>
                   <p>
-                    <span className="font-medium">Watering:</span> {plant.wateringFrequency}
+                    <span className="font-medium">Watering:</span>{" "}
+                    {plant.wateringFrequency}
                   </p>
                   <p>
-                    <span className="font-medium">Last Watered:</span> {plant.lastWateredDate}
+                    <span className="font-medium">Last Watered:</span>{" "}
+                    {plant.lastWateredDate}
                   </p>
                   <p>
-                    <span className="font-medium">Next Watering:</span> {plant.nextWateringDate}
-                  </p>
-                  <p>
-                    <span className="font-medium">Health:</span> {plant.healthStatus}
+                    <span className="font-medium">Next Watering:</span>{" "}
+                    {plant.nextWateringDate}
                   </p>
                 </div>
 
-                <div className="pt-4 flex justify-between">
+                <div className="card-actions justify-between pt-4">
                   <button
                     onClick={() => navigate(`/update-plant/${plant._id}`)}
-                    className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+                    className="btn btn-sm text-white bg-[#325432]"
                   >
                     Update
                   </button>
                   <button
                     onClick={() => handleDelete(plant._id)}
-                    className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
+                    className="btn btn-sm btn-error"
                   >
                     Delete
                   </button>
