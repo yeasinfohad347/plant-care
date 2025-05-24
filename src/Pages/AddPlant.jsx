@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Authentication/AuthContext";
+import { Helmet } from "react-helmet-async";
 
 const AddPlant = () => {
   const {user}=useContext(AuthContext)
@@ -11,9 +12,9 @@ const AddPlant = () => {
     const form = e.target;
     const formData = new FormData(form);
     const plantInfo = Object.fromEntries(formData.entries());
-    console.log(plantInfo);
+    
 
-    fetch("http://localhost:3000/addplant", {
+    fetch("https://plant-care-tracker-server-two.vercel.app/addplant", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -23,7 +24,7 @@ const AddPlant = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          console.log("data from db", data);
+          
           e.target.reset();
           Swal.fire({
             title: "Your plant is Successfully added",
@@ -41,6 +42,9 @@ const AddPlant = () => {
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="w-full mx-auto"
     >
+      <Helmet>
+              <title>Add-Plants</title>
+            </Helmet>
       <div className="max-w-2xl mx-auto p-8 mt-10 bg-white shadow-2xl rounded-lg">
         <h2 className="text-2xl font-bold mb-6 text-center text-green-800">
           Add New Plant
@@ -165,6 +169,7 @@ const AddPlant = () => {
               id="userEmail"
               name="userEmail"
               value={user.email}
+              readOnly
               className="input input-bordered w-full"
             />
           </div>
@@ -177,6 +182,7 @@ const AddPlant = () => {
               id="userName"
               name="userName"
               value={user.displayName}
+              readOnly
               className="input input-bordered w-full"
             />
           </div>

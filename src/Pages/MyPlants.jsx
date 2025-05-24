@@ -3,6 +3,8 @@ import { AuthContext } from "../Authentication/AuthContext";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import Loading from "./Loading";
+import { format, parseISO } from "date-fns";
+import { Helmet } from "react-helmet-async";
 
 const MyPlants = () => {
   const { user } = useContext(AuthContext);
@@ -11,14 +13,16 @@ const MyPlants = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:3000/plants/email/${user.email}`)
+    fetch(
+      `https://plant-care-tracker-server-two.vercel.app/plants/email/${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setPlants(data);
         setIsLoading(false);
       })
       .catch((err) => {
-        console.error("Error fetching plants:", err);
+        console.error(err);
         setIsLoading(false);
       });
   }, [user.email]);
@@ -34,7 +38,7 @@ const MyPlants = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/plants/${id}`, {
+        fetch(`https://plant-care-tracker-server-two.vercel.app/plants/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -54,14 +58,17 @@ const MyPlants = () => {
   }
 
   return (
-    <div className="p-4 w-11/12 mx-auto my-20">
-      <h2 className="text-4xl font-bold mb-10 text-center text-green-700">
+    <div className="p-4 sm:p-6 md:p-8 w-full max-w-7xl mx-auto my-10">
+      <Helmet>
+        <title>My-Plants</title>
+      </Helmet>
+      <h2 className="text-3xl sm:text-4xl font-bold mb-10 text-center text-green-700">
         🌿 My Plants
       </h2>
 
       {plants.length === 0 ? (
         <div className="text-center my-20">
-          <h3 className="text-2xl font-semibold text-gray-700 mb-4">
+          <h3 className="text-xl sm:text-2xl font-semibold text-gray-700 mb-4">
             You haven't added any plants yet.
           </h3>
           <button
@@ -72,14 +79,17 @@ const MyPlants = () => {
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {plants.map((plant) => (
-            <div key={plant._id} className="card bg-base-100 w-96 shadow-sm">
-              <figure className="h-52 bg-base-200 flex items-center justify-center">
+            <div
+              key={plant._id}
+              className="card bg-base-100 w-full max-w-sm mx-auto shadow-sm"
+            >
+              <figure className="h-52 bg-base-200 flex items-center justify-center overflow-hidden">
                 <img
                   src={plant.image}
                   alt={plant.plantName}
-                  className="max-h-full max-w-full object-contain rounded-xl"
+                  className="h-full w-auto object-contain rounded-xl"
                 />
               </figure>
               <div className="card-body">
@@ -106,11 +116,15 @@ const MyPlants = () => {
                   </p>
                   <p>
                     <span className="font-medium">Last Watered:</span>{" "}
-                    {plant.lastWateredDate}
+                    {plant.lastWateredDate
+                      ? format(parseISO(plant.lastWateredDate), "dd MMM yyyy")
+                      : "N/A"}
                   </p>
                   <p>
                     <span className="font-medium">Next Watering:</span>{" "}
-                    {plant.nextWateringDate}
+                    {plant.nextWateringDate
+                      ? format(parseISO(plant.nextWateringDate), "dd MMM yyyy")
+                      : "N/A"}
                   </p>
                 </div>
 

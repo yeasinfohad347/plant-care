@@ -8,7 +8,7 @@ const UserStories = () => {
 
   // Fetch stories from DB
   useEffect(() => {
-    fetch("http://localhost:3000/userFeedback")
+    fetch("https://plant-care-tracker-server-two.vercel.app/userFeedback")
       .then((res) => res.json())
       .then((data) => setStories(data));
   }, []);
@@ -20,12 +20,12 @@ const UserStories = () => {
     const formData = new FormData(form);
     const newStory = Object.fromEntries(formData.entries());
 
-    fetch("http://localhost:3000/userFeedback", {
+    fetch("https://plant-care-tracker-server-two.vercel.app/userFeedback", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newStory),
     })
-      .then(() => fetch("http://localhost:3000/userFeedback"))
+      .then(() => fetch("https://plant-care-tracker-server-two.vercel.app/userFeedback"))
       .then((res) => res.json())
       .then((updatedStories) => {
         setStories(updatedStories);

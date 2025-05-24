@@ -1,4 +1,6 @@
+import { format, parseISO } from "date-fns";
 import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link, useLoaderData } from "react-router";
 
 const AllPlants = () => {
@@ -21,9 +23,11 @@ const AllPlants = () => {
     }
     return 0;
   });
-
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
+      <Helmet>
+        <title>All-Plants</title>
+      </Helmet>
       <h2 className="text-3xl font-bold text-center mb-6 text-green-700">
         All Plants
       </h2>
@@ -63,7 +67,11 @@ const AllPlants = () => {
                 <td>{plant.plantName}</td>
                 <td>{plant.category}</td>
                 <td>{plant.wateringFrequency}</td>
-                <td>{plant.nextWateringDate}</td>
+                <td>
+                  {plant.nextWateringDate
+                    ? format(parseISO(plant.nextWateringDate), "dd MMM yyyy")
+                    : "N/A"}
+                </td>
                 <td className="capitalize">{plant.careLevel}</td>
                 <td>
                   <Link
@@ -75,13 +83,6 @@ const AllPlants = () => {
                 </td>
               </tr>
             ))}
-            {sortedPlants.length === 0 && (
-              <tr>
-                <td colSpan="7" className="text-center py-4 text-gray-500">
-                  No plants found.
-                </td>
-              </tr>
-            )}
           </tbody>
         </table>
       </div>

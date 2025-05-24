@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useLoaderData, useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
 const UpdatePlant = () => {
   const plant = useLoaderData();
   const navigate = useNavigate();
+
   const {
     _id,
     image,
@@ -17,15 +20,22 @@ const UpdatePlant = () => {
     wateringFrequency,
   } = plant;
 
-  console.log(plant);
+  const [loading, setLoading] = useState(false);
+
+  const formatDate = (dateStr) => {
+    if (!dateStr) return "";
+    return new Date(dateStr).toISOString().split("T")[0];
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
+
     const form = e.target;
     const formData = new FormData(form);
     const newPlantInfo = Object.fromEntries(formData.entries());
 
-    fetch(`http://localhost:3000/plants/${_id}`, {
+    fetch(`https://plant-care-tracker-server-two.vercel.app/plants/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -34,14 +44,41 @@ const UpdatePlant = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        setLoading(false);
         if (data.modifiedCount) {
           navigate("/myplants");
-          e.target.reset()
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Plant info has been updated",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          Swal.fire({
+            icon: "info",
+            title: "No changes detected",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
+      })
+      .catch((err) => {
+        setLoading(false);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Failed to update plant info. Please try again.",
+        });
+        console.error(err);
       });
   };
+
   return (
     <div className="max-w-2xl mx-auto p-8 mt-10 bg-white shadow-2xl rounded-lg">
+      <Helmet>
+        <title>Update Plant</title>
+      </Helmet>
       <h2 className="text-2xl font-bold mb-6 text-center text-green-800">
         Update Plant
       </h2>
@@ -132,7 +169,7 @@ const UpdatePlant = () => {
             type="date"
             id="lastWateredDate"
             name="lastWateredDate"
-            defaultValue={lastWateredDate}
+            defaultValue={formatDate(lastWateredDate)}
             className="input input-bordered w-full"
           />
         </div>
@@ -144,7 +181,7 @@ const UpdatePlant = () => {
             type="date"
             id="nextWateringDate"
             name="nextWateringDate"
-            defaultValue={nextWateringDate}
+            defaultValue={formatDate(nextWateringDate)}
             className="input input-bordered w-full"
           />
         </div>
@@ -162,8 +199,12 @@ const UpdatePlant = () => {
         </div>
 
         {/* Submit Button */}
-        <button type="submit" className="btn btn-primary w-full bg-green-600">
-          Update Plant
+        <button
+          type="submit"
+          className="btn btn-primary w-full bg-green-600"
+          disabled={loading}
+        >
+          {loading ? "Updating..." : "Update Plant"}
         </button>
       </form>
     </div>

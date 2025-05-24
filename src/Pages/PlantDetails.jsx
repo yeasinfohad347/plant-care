@@ -1,15 +1,19 @@
 import React from "react";
 import { useLoaderData } from "react-router";
 import Loading from "./Loading";
+import { Helmet } from "react-helmet-async";
 
 const PlantDetails = () => {
   const plant = useLoaderData();
-   if (!plant) {
-    return <Loading/>
+  if (!plant) {
+    return <Loading />;
   }
 
   return (
     <div className="max-w-3xl mx-auto p-6 my-10 bg-white shadow-lg rounded-lg">
+      <Helmet>
+        <title>Plants-Details</title>
+      </Helmet>
       <h2 className="text-3xl font-bold mb-4 text-green-700 text-center">
         {plant.plantName}
       </h2>

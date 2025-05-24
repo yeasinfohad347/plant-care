@@ -1,23 +1,24 @@
-import React, { useContext, useState } from "react";
+import React, { useContext} from "react";
 import logo from "../assets/logo.png";
 import { AuthContext } from "../Authentication/AuthContext";
 import Swal from "sweetalert2";
 import { useNavigate, useLocation, Link } from "react-router";
+import { Helmet } from "react-helmet-async";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-  const [error, setError] = useState("");
-  const { loginUser,signInWithGoogle } = useContext(AuthContext);
+  const { loginUser, signInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
-   const handleGoogleSignIn = () => {
+  const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((res) => {
         navigate(`${location.state ? location.state : "/"}`);
-        
       })
       .catch((err) => {
-        console.log(err)
+        toast.error("Google Sign-In failed. Please try again.");
       });
   };
 
@@ -35,12 +36,18 @@ const Login = () => {
         navigate(location.state ? location.state : "/");
       })
       .catch(() => {
-        setError("Wrong Password");
+        toast.error("Wrong email or password.");
       });
   };
 
   return (
-    <div className=" max-w-sm mx-auto my-20">
+    <div className="max-w-sm mx-auto my-20 p-5">
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
+
+      <ToastContainer />
+
       <div className="text-center space-y-2 mb-6">
         <div className="flex justify-center">
           <img
@@ -92,17 +99,13 @@ const Login = () => {
             <span className="ml-2">Remember me</span>
           </label>
 
-          <a
-            href="#"
+          <Link
+            to="/forgotPassword"
             className="text-sm font-medium text-green-600 hover:text-green-500"
           >
             Forgot password?
-          </a>
+          </Link>
         </div>
-
-        {error && (
-          <p className="text-red-600 text-sm whitespace-pre-line">{error}</p>
-        )}
 
         <button
           type="submit"
@@ -111,11 +114,11 @@ const Login = () => {
           Sign in
         </button>
       </form>
+
       <div>
-        {/* Login  with google */}
         <button
           onClick={handleGoogleSignIn}
-          className="btn w-full  bg-[#FEE502]  text-black my-2 border-[#e5e5e5]"
+          className="btn w-full bg-[#FEE502] text-black my-2 border-[#e5e5e5]"
           type="button"
         >
           <svg
@@ -147,6 +150,7 @@ const Login = () => {
           </svg>
           Login with Google
         </button>
+
         <p className="text-sm text-gray-600 text-center">
           Don't have an account?
           <Link

@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 
 import { Link } from "react-router";
 import { AuthContext } from "../Authentication/AuthContext";
+import { Helmet } from "react-helmet-async";
 //import { Helmet } from "react-helmet-async";
 
 const Profile = () => {
@@ -21,9 +22,9 @@ const Profile = () => {
 
   return (
     <div className="max-w-sm mx-auto bg-white rounded-lg shadow-lg p-6 text-center mt-16 md:mt-30">
-      {/* <Helmet>
+      <Helmet>
         <title>Profile</title>
-      </Helmet> */}
+      </Helmet>
       <img
         src={user?.photoURL || "/defaultUserIcon.png"}
         alt="Profile"
@@ -33,7 +34,7 @@ const Profile = () => {
         {user?.displayName || "Anonymous User"}
       </h2>
       <p className="text-gray-600">{user?.email}</p>
-      <Link to='/auth/update-profile'>
+      <Link to='/updateProfile'>
         <button className="mt-4 px-4 py-2 bg-[#325432] text-white rounded-lg hover:bg-[#060b06] transition">
           Update Profile
         </button>

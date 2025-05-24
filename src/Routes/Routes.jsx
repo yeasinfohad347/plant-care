@@ -14,6 +14,8 @@ import MyPlants from "../Pages/MyPlants";
 import UpdatePlant from "../Pages/UpdatePlant";
 import Loading from "../Pages/Loading";
 import ErrorPage from "../Pages/ErrorPage";
+import UpdateProfile from "../Pages/UpdateProfile";
+import ForgotPassword from "../Pages/ForgotPassword";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +36,14 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
+        path:'/updateProfile',
+        element:<UpdateProfile/>
+      },
+      {
+        path:'/forgotPassword',
+        element:<ForgotPassword/>
+      },
+      {
         path: "/addplant",
         element: (
           <PrivetRoute>
@@ -43,14 +53,14 @@ const router = createBrowserRouter([
       },
       {
         path: "/allplants",
-        loader: () => fetch("http://localhost:3000/plants"),
+        loader: () => fetch("https://plant-care-tracker-server-two.vercel.app/plants"),
         element: <AllPlants />,
         hydrateFallbackElement:<Loading/>
       },
       {
         path: "/plants/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/plants/${params.id}`),
+          fetch(`https://plant-care-tracker-server-two.vercel.app/plants/${params.id}`),
         element: (
           <PrivetRoute>
             <PlantDetails />
@@ -75,7 +85,7 @@ const router = createBrowserRouter([
       {
         path:'/update-plant/:id',
          loader: ({ params }) =>
-          fetch(`http://localhost:3000/plants/${params.id}`),
+          fetch(`https://plant-care-tracker-server-two.vercel.app/plants/${params.id}`),
          element:<UpdatePlant/>,
          hydrateFallbackElement:<Loading/>
 

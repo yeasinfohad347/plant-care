@@ -11,7 +11,7 @@ const AnimatedPlantSlider = () => {
     fetch("/slider.json")
       .then((res) => res.json())
       .then((data) => {
-        console.log("Slider data:", data);
+        
         setSlides(data);
       })
       // .catch((err) => console.error("Failed to load slider data:", err));
