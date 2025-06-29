@@ -1,121 +1,93 @@
 # 🌿 Plant Care Tracker
 
-A responsive full-stack web application that helps plant lovers track the health, watering schedule, and care requirements of their plants. Built with **React**, **Firebase**, and **Express.js**,**Node js**,**MongoDB**.
+Live Website: [https://plant-care-tracker-6dcaf.web.app/](https://plant-care-tracker-6dcaf.web.app/)
+
+## 🧠 Overview
+
+**Plant Care Tracker** is a full-stack web application designed to help plant lovers manage their plant collections, track care schedules, and record recovery or success stories. The app supports user authentication, plant data management, and recovery logging features.
 
 ---
 
-## 🔗 Live Website
+## 🔗 Features
 
-👉 [https://plant-care-tracker-6dcaf.web.app/](https://plant-care-tracker-6dcaf.web.app/)
+### 🔒 Authentication
+- Login / Register using email & password (Firebase Auth)
+- Secure Private Routes
+
+### 🌱 Plant Management
+- View all plants
+- Filter by plant type
+- Add new plants
+- Update and delete plant entries
+
+### 📦 Recovery Tracker
+- Users can report lost/found plants
+- Submit recovery data (location, date, and user info)
+- Recovered plants appear in the **“Successfully Found”** section
+
+### 💬 Success Stories
+- Users can share their successful recovery stories
+- Stories are shown publicly with author and date
+
+### 📊 Dashboard Features (Optional if implemented)
+- Charts using Recharts
+- Count animations (react-countup)
+- Sorting, searching, and filtering options
 
 ---
 
-## 🚀 Features
+## 🛠️ Tech Stack
 
-- 🔐 **User Authentication** (Firebase)
-- 🪴 **Add / View / Update / Delete** plants
-- 📅 Track **watering dates**
-- 💪 Monitor **plant health** and **care level**
-- 📧 View plants by **user email**
-- 🌈 SweetAlert2 for success and confirmation dialogs
-- 📱 Fully **responsive for mobile devices**
-- 🌐 Dynamic titles with React Helmet Async
+### 🔹 Client
+- React.js (Vite)
+- React Router DOM
+- Firebase Authentication
+- Axios
+- Tailwind CSS
+- React DatePicker
+- React Toastify
+- Recharts (for data visualization)
+
+### 🔹 Server
+- Node.js
+- Express.js
+- MongoDB (with Mongoose)
+- CORS, dotenv
 
 ---
 
+## 🚀 Deployment
 
+### Frontend
+- Hosted on Firebase:  
+  [https://plant-care-tracker-6dcaf.web.app/](https://plant-care-tracker-6dcaf.web.app/)
 
-🎯 Objective
+### Backend
+- Hosted on Render / Vercel / Cyclic (replace with actual URL if public):  
+  `https://your-server-url.com`
 
-The goal of this application is to provide a convenient, centralized platform for plant enthusiasts to:
+---
 
-Track watering schedules
+## 🧪 How to Use
 
-Maintain detailed plant health and care records
+1. Register and log in
+2. Add new plants to your collection
+3. View and manage your plants
+4. Mark lost/found plants and track recovery
+5. Submit success stories if a plant is recovered!
 
-Access and manage their plant data anytime, from any device
+---
 
-Organize plants based on categories (e.g., succulent, fern, flowering)
+## 👨‍💻 Developer
 
-Receive a seamless and interactive user experience
+- **Yeasin Forhad**
+- 💼 ICT Student | Web Developer
+- 🌐 [Portfolio (Coming Soon)]()
+- 📧 yeasinfohad347@gmail.com
 
+---
 
-Home Page
+## 📄 License
 
-Add Plant Form
+This project is open source and free to use for educational or personal purposes.
 
-My Plants List (Dashboard)
-
-Update Plant Form
-
-Delete Confirmation Alert
-
-🧪 Sample Plant Data
-
-Here's an example of how each plant document is structured:
-
-{
-"image": "https://i.ibb.co/x83gJGc/peace-lily.jpg",
-"plantName": "Peace Lily",
-"category": "flowering",
-"description": "Thrives in shade and needs consistent watering.",
-"careLevel": "easy",
-"wateringFrequency": "every 5 days",
-"lastWateredDate": "2025-05-20",
-"nextWateringDate": "2025-05-25",
-"healthStatus": "Healthy",
-"userEmail": "example@email.com",
-"userName": "Yeasin Forhad"
-}
-
-🛠 Tech Stack
-
-Frontend
-
-React.js – Component-based frontend framework
-
-Tailwind CSS – Utility-first CSS for fast styling
-
-React Router DOM – Client-side routing
-
-Firebase – Authentication and hosting
-
-React Helmet Async – Dynamic page metadata
-
-SweetAlert2 – Custom popup dialogs
-
-Date-FNS – Date formatting and manipulation
-
-Backend
-
-Node.js – JavaScript runtime
-
-Express.js – REST API development
-
-MongoDB – NoSQL database
-
-Vercel – Server deployment
-
-
-
-📊 Future Improvements
-
-Add custom plant reminders via email
-
-Add ability to upload images instead of just URL input
-
-Filter and sort plants based on care level or date
-
-Add dark mode
-
-Dashboard analytics (e.g., how many plants watered this week)
-
-👤 Author
-
-Yeasin Forhad🎓 BSc in ICT, Comilla University
-
-
-
-🙌 Contributions
-
-Contributions, feedback, and feature requests are welcome! Feel free to open an issue or a pull request.
