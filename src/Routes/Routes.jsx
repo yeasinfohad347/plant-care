@@ -1,6 +1,5 @@
 import React from "react";
-
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createBrowserRouter } from "react-router";
 import HomeLayouts from "../Layouts/HomeLayouts";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
@@ -17,34 +16,29 @@ import ErrorPage from "../Pages/ErrorPage";
 import UpdateProfile from "../Pages/UpdateProfile";
 import ForgotPassword from "../Pages/ForgotPassword";
 
+// Dashboard
+import DashboardLayout from "../Pages/DashboardLayout";
+import DashboardHome from "../Pages/Dashboard/DashboardHome";
+import AllItem from "../Pages/Dashboard/Allitem";
+import AddItem from "../Pages/Dashboard/AddItem";
+import MyItem from "../Pages/Dashboard/MyItem";
+
+// import AddItem from "../Pages/Dashboard/AddItem";
+// import MyItems from "../Pages/Dashboard/MyItems";
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayouts />,
     children: [
+      { index: true, element: <Home /> },
+      { path: "login", element: <Login /> },
+      { path: "register", element: <Register /> },
+      { path: "updateProfile", element: <UpdateProfile /> },
+      { path: "forgotPassword", element: <ForgotPassword /> },
+
       {
-        index: true,
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
-      },
-      {
-        path:'/updateProfile',
-        element:<UpdateProfile/>
-      },
-      {
-        path:'/forgotPassword',
-        element:<ForgotPassword/>
-      },
-      {
-        path: "/addplant",
+        path: "addplant",
         element: (
           <PrivetRoute>
             <AddPlant />
@@ -52,49 +46,79 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/allplants",
+        path: "allplants",
         loader: () => fetch("https://plant-care-tracker-server-two.vercel.app/plants"),
         element: <AllPlants />,
-        hydrateFallbackElement:<Loading/>
+        hydrateFallbackElement: <Loading />,
       },
       {
-        path: "/plants/:id",
+        path: "plants/:id",
         loader: ({ params }) =>
           fetch(`https://plant-care-tracker-server-two.vercel.app/plants/${params.id}`),
         element: (
           <PrivetRoute>
             <PlantDetails />
           </PrivetRoute>
-        
         ),
-        hydrateFallbackElement:<Loading/>
+        hydrateFallbackElement: <Loading />,
       },
       {
-        path:'/profile',
-        element:<PrivetRoute>
-          <Profile/>
-        </PrivetRoute>
+        path: "profile",
+        element: (
+          <PrivetRoute>
+            <Profile />
+          </PrivetRoute>
+        ),
       },
       {
-        path:'/myplants',
-        element:
-        <PrivetRoute>
-          <MyPlants/>
-        </PrivetRoute>
+        path: "myplants",
+        element: (
+          <PrivetRoute>
+            <MyPlants />
+          </PrivetRoute>
+        ),
       },
       {
-        path:'/update-plant/:id',
-         loader: ({ params }) =>
+        path: "update-plant/:id",
+        loader: ({ params }) =>
           fetch(`https://plant-care-tracker-server-two.vercel.app/plants/${params.id}`),
-         element:<UpdatePlant/>,
-         hydrateFallbackElement:<Loading/>
+        element: <UpdatePlant />,
+        hydrateFallbackElement: <Loading />,
+      },
 
-      }
+      // 🧩 Dashboard and its children
+      {
+        path: "/dashboard",
+        element: (
+          <PrivetRoute>
+            <DashboardLayout />
+          </PrivetRoute>
+        ),
+        children: [
+          {
+            index: true,
+            element: <DashboardHome />,
+          },
+          {
+            path: "/dashboard/all-items",
+            loader: () => fetch("https://plant-care-tracker-server-two.vercel.app/plants"),
+            element: <AllItem />,
+          },
+          {
+            path: "/dashboard/add-item",
+            element: <AddItem />,
+          },
+          {
+            path: "/dashboard/my-items",
+            element: <MyItem />,
+          },
+        ],
+      },
     ],
   },
   {
     path: "*",
-    element: <ErrorPage/>,
+    element: <ErrorPage />,
   },
 ]);
 

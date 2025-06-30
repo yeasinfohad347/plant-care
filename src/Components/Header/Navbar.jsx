@@ -78,6 +78,11 @@ const Navbar = () => {
                   My Plants
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/dashboard" className={navLinkClass}>
+                  Dashboard
+                </NavLink>
+              </li>
 
               {/* Profile Link only visible in dropdown for sm devices */}
               {user && (
@@ -123,7 +128,10 @@ const Navbar = () => {
               className="h-12 w-12 max-sm:hidden rounded-full bg-[#348553]"
               alt="logo"
             />
-            <Link to="/" className="text-2xl max-sm:ml-2 font-bold text-[#325432]">
+            <Link
+              to="/"
+              className="text-2xl max-sm:ml-2 font-bold text-[#325432]"
+            >
               PlantPal
             </Link>
           </div>
@@ -137,6 +145,7 @@ const Navbar = () => {
                 Home
               </NavLink>
             </li>
+
             <li>
               <NavLink to="/allplants" className={navLinkClass}>
                 All Plants
@@ -145,6 +154,11 @@ const Navbar = () => {
             <li>
               <NavLink to="/addplant" className={navLinkClass}>
                 Add Plant
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/dashboard" className={navLinkClass}>
+                Dashboard
               </NavLink>
             </li>
             <li>

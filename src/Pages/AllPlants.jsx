@@ -7,14 +7,12 @@ const AllPlants = () => {
   const plants = useLoaderData();
   const [sortBy, setSortBy] = useState("");
 
-  // Define care level priority
   const careLevelOrder = {
     easy: 1,
     moderate: 2,
     difficult: 3,
   };
 
-  // Apply sorting based on selected option
   const sortedPlants = [...plants].sort((a, b) => {
     if (sortBy === "nextWateringDate") {
       return new Date(a.nextWateringDate) - new Date(b.nextWateringDate);
@@ -23,6 +21,7 @@ const AllPlants = () => {
     }
     return 0;
   });
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
       <Helmet>
@@ -32,7 +31,7 @@ const AllPlants = () => {
         All Plants
       </h2>
 
-      {/* Sorting Dropdown */}
+      {/* Sorting */}
       <div className="mb-6 text-right">
         <label className="mr-2 font-medium">Sort by:</label>
         <select
@@ -46,45 +45,35 @@ const AllPlants = () => {
         </select>
       </div>
 
-      {/* Plants Table */}
-      <div className="overflow-x-auto min-h-screen">
-        <table className="table w-full border rounded-lg shadow">
-          <thead className="bg-green-200 text-green-900">
-            <tr>
-              <th>#</th>
-              <th>Plant Name</th>
-              <th>Category</th>
-              <th>Watering Frequency</th>
-              <th>Next Watering</th>
-              <th>Care Level</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {sortedPlants.map((plant, index) => (
-              <tr key={plant._id} className="hover:bg-green-400 transition">
-                <td>{index + 1}</td>
-                <td>{plant.plantName}</td>
-                <td>{plant.category}</td>
-                <td>{plant.wateringFrequency}</td>
-                <td>
-                  {plant.nextWateringDate
-                    ? format(parseISO(plant.nextWateringDate), "dd MMM yyyy")
-                    : "N/A"}
-                </td>
-                <td className="capitalize">{plant.careLevel}</td>
-                <td>
-                  <Link
-                    to={`/plants/${plant._id}`}
-                    className="btn btn-sm bg-green-600 text-white hover:bg-green-700"
-                  >
-                    View Details
-                  </Link>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      {/* Cards Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {sortedPlants.map((plant) => (
+          <div
+            key={plant._id}
+            className="bg-white rounded-xl shadow-lg p-6 border border-green-100 hover:shadow-green-300 transition duration-200"
+          >
+            <h3 className="text-xl font-bold text-green-700 mb-2">{plant.plantName}</h3>
+            <p className="text-gray-700"><span className="font-semibold">Category:</span> {plant.category}</p>
+            <p className="text-gray-700"><span className="font-semibold">Watering Frequency:</span> {plant.wateringFrequency}</p>
+            <p className="text-gray-700">
+              <span className="font-semibold">Next Watering:</span>{" "}
+              {plant.nextWateringDate
+                ? format(parseISO(plant.nextWateringDate), "dd MMM yyyy")
+                : "N/A"}
+            </p>
+            <p className="text-gray-700 capitalize">
+              <span className="font-semibold">Care Level:</span> {plant.careLevel}
+            </p>
+            <div className="mt-4">
+              <Link
+                to={`/plants/${plant._id}`}
+                className="btn btn-sm bg-green-600 text-white hover:bg-green-700"
+              >
+                View Details
+              </Link>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
