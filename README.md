@@ -82,7 +82,6 @@ Live Website: [https://plant-care-tracker-6dcaf.web.app/](https://plant-care-tra
 
 - **Yeasin Forhad**
 - 💼 ICT Student | Web Developer
-- 🌐 [Portfolio (Coming Soon)]()
 - 📧 yeasinfohad347@gmail.com
 
 ---
